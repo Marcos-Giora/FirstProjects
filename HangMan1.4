@@ -1,0 +1,572 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[12]:
+
+
+frutas = [
+    "Apple",
+    "Banana",
+    "Strawberry",
+    "Grape",
+    "Pineapple",
+    "Pear",
+    "Watermelon",
+    "Mango",
+    "Kiwi",
+    "Orange",
+    "Lemon",
+    "Peach",
+    "Cherry",
+    "Avocado",
+    "Plum",
+    "Melon",
+    "Raspberry",
+    "Coconut",
+    "Surinam Cherry",
+    "Guava",
+    "Passion Fruit",
+    "Tangerine",
+    "Nectarine",
+    "Persimmon",
+    "Pomelo",
+    "Cashew",
+    "Physalis",
+    "Papaya",
+    "Figs",
+    "Lychee",
+    "Jabuticaba",
+    "Peach",
+    "Pomegranate",
+    "Açaí",
+    "Guarana",
+    "Blueberry",
+    "Blackberry",
+    "Acerola",
+    "Currant",
+    "Atemoya",
+    "Jambo",
+    "Rambutan",
+    "Date",
+    "Kumquat",
+    "Jackfruit",
+    "Sapote",
+    "Dragon Fruit",
+    "Tamarind",
+    "Papaya"
+]
+
+dic_frutas = {
+    'banana': 'A yellow fruit, usually used in smoothies and desserts.',
+    'apple': 'A red or green fruit with a thin and crisp skin.',
+    'orange': 'A citrus fruit with a thick and juicy peel.',
+    'grape': 'Small round fruits, usually found in clusters.',
+    'strawberry': 'A red and juicy fruit with seeds on the surface.',
+    'pineapple': 'A tropical fruit with a spiky skin and sweet flesh.',
+    'kiwi': 'A small brown fruit with green interior and black seeds.',
+    'peach': 'A juicy fruit with velvety skin.',
+    'pear': 'An elongated fruit with thin skin, usually yellow or green.',
+    'watermelon': 'A large fruit, usually green on the outside and red on the inside.',
+    'melon': 'A sweet and juicy fruit with a hard rind.',
+    'avocado': 'A creamy fruit with green or purple skin.',
+    'mango': 'A tropical fruit with juicy flesh and a large seed.',
+    'cherry': 'Small red or black fruits, often used in desserts.',
+    'plum': 'A small round fruit with a thin skin and juicy flesh.',
+    'raspberry': 'Small red fruits that grow on bushes.',
+    'blueberry': 'Small dark blue fruits, often used in smoothies.',
+    'guava': 'A tropical fruit with pink or yellow flesh.',
+    'coconut': 'A fruit with white flesh and a hard shell, usually found in tropical regions.',
+    'pineapple': 'A tropical fruit with juicy flesh and a sweet taste.',
+    'fig': 'A teardrop-shaped fruit with thin skin and sweet flesh.',
+    'passion fruit': 'A fruit with a hard peel and seed-filled flesh.',
+    'star fruit': 'A star-shaped fruit with a mild and sweet taste.',
+    'surinam cherry': 'Small red or yellow fruits with a sweet and sour taste.',
+    'pineapple': 'A tropical fruit with juicy flesh and a sweet taste.',
+    'plum': 'A small round fruit with a thin skin and juicy flesh.',
+    'acerola': 'Small red fruits, rich in vitamin C.',
+    'persimmon': 'A fruit with thin skin and sweet flesh, usually orange in color.',
+    'lychee': 'An Asian fruit with red skin and translucent flesh.',
+    'tangerine': 'A citrus fruit similar to an orange, easy to peel.',
+    'banana': 'A yellow fruit, usually used in smoothies and desserts.',
+    'avocado': 'A creamy fruit with green or purple skin.',
+    'melon': 'A sweet and juicy fruit with a hard rind.',
+    'nectarine': 'Similar to peach, but with smooth skin and firmer flesh.',
+    'apricot': 'A small orange fruit with juicy flesh.',
+    'papaya': 'A tropical fruit with orange flesh and black seeds.',
+    'cashew': 'A common tropical fruit with a sweet and sour taste.',
+    'abiu': 'A yellow and round fruit, native to the Amazon.',
+    'soursop': 'A green and spiky fruit with juicy flesh and a unique flavor.',
+    'jabuticaba': 'Small purple fruits that grow directly on the tree trunk.',
+    'sapote': 'A brown and round fruit with sweet and unique flavor.',
+    'papaya': 'An orange or yellow fruit with juicy flesh and a sweet taste.',
+    'pumpkin': 'A fruit with hard skin and orange flesh, often used in savory dishes.',
+    'persimmon': 'A fruit with thin skin and sweet flesh, usually orange in color.',
+    'marula': 'An African fruit with juicy flesh used in liquor production.',
+    'plum': 'A small round fruit with a thin skin and juicy flesh.',
+    'surinam cherry': 'Small red or yellow fruits with a sweet and sour taste.',
+    'acerola': 'Small red fruits, rich in vitamin C.',
+    'tamarind': 'A fruit with hard peel and acidic flesh, common in Asian dishes.',
+}
+
+filmes = [
+    'Titanic',
+    'Matrix',
+    'Gladiator',
+    'Batman',
+    'Click',
+    'Avatar',
+    'Jaws',
+    'Frozen',
+    'Brazil',
+    'Casablanca',
+    'Mulan',
+    'Zootopia',
+    'Predator',
+    'Inception',
+    'Madagascar',
+    'Shrek',
+    'Ratatouille',
+    'Her'
+]
+
+dic_filmes = {
+    'titanic': 'A story of two young people and a tragedy.',
+    'matrix': 'A science fiction film with innovative action scenes.',
+    'gladiator': 'A historical epic set in Ancient Rome.',
+    'batman': 'A vigilante who protects his hometown at night.',
+    'click': 'A comedy with elements of science fiction about a remote control.',
+    'avatar': 'A science fiction film with a lush alien world.',
+    'jaws': 'A suspense film by Steven Spielberg about a marine animal.',
+    'frozen': 'Disney animation about two sisters with magical powers.',
+    'brazil': 'A dystopian and satirical film directed by Terry Gilliam.',
+    'casablanca': 'A classic romance during World War II.',
+    'mulan': 'An animation set in the Orient about overcoming and war.',
+    'zootopia': 'Disney animation about a rabbit police officer in a city inhabited by anthropomorphic animals.',
+    'predator': 'An action and science fiction film with a hunter.',
+    'inception': 'A science fiction thriller directed by Christopher Nolan about dreams and reality.',
+    'madagascar': 'Animation about zoo animals escaping to the jungle.',
+    'shrek': 'Irreverent animation about a swamp creature on a journey.',
+    'ratatouille': 'Pixar animation involving an animal and the kitchen'
+}
+
+import os
+
+def limpar_tela():
+    os.system('cls')  # Limpa a tela no terminal do Windows
+    
+def game():
+    retry = True
+    while retry == True:
+        resp1 = int(input("Type 1 to start "))
+
+        while resp1 != 1:
+            resp1 = int(input("Type 1 to start "))
+
+        else:
+            print("ok")
+
+        import random
+        opcoes = ['Filmes','Frutas']
+        
+        loop1 = True
+        while loop1 == True:
+            try:
+                resp2 = int(input("Which subject do you want to play? 1-Movies 2-Fruits: "))
+                if resp2 == 1 or resp2 == 2:
+                    loop1 = False
+                    
+                else:
+                    print("Invalid option. Please choose between 1 or 2: ")
+            except ValueError:
+                print("Invalid option. Please choose between 1 or 2: ")
+        
+        loop3 = True
+
+        while loop3 == True:
+            try:
+                resp4 = int(input("Choose the difficulty: 1-Easy 2-Normal 3-Hard: "))
+                if resp4 == 1:
+                    dificuldade = 7
+                    loop3 = False
+                elif resp4 == 2:
+                    dificuldade = 5
+                    loop3 = False
+                elif resp4 == 3:
+                    dificuldade = 3
+                    loop3 = False
+                else:
+                    print("Invalid option. Choose the difficulty: 1-Easy 2-Normal 3-Hard: ")
+            except ValueError:
+                print("Invalid option. Choose the difficulty: 1-Easy 2-Normal 3-Hard: ")
+        
+        from unidecode import unidecode
+
+        loop2 = False
+        while loop2 == False:
+            if resp2 == 2:
+                sorteio = random.choice(list(dic_frutas.keys())) #TESTE TESTE
+                #print(sorteio)                                   #TESTE TESTE
+                #print(dic_frutas[sorteio])                       #TESTE TESTE   
+                temp = sorteio
+                palavra = temp.upper()
+                palavra2 = unidecode(temp.upper())
+                loop2 = True
+                break
+            elif resp2 == 1:
+                sorteio = random.choice(list(dic_filmes.keys()))
+                temp = sorteio
+                palavra = temp.upper()
+                palavra2 = unidecode(temp.upper())
+                loop2 = True
+                break
+            else:
+                resp2 = input("Escolha uma opcao valida (1-Filmes, 2-Frutas) ")
+
+        def dica(assunto):
+            if resp2 == 2:
+                return dic_frutas[assunto]
+            else:
+                return dic_filmes[assunto]
+            
+        
+        print('Your word has ' ,len(palavra.replace(" ","")), 'letters')
+
+        covered_letras = ['_' for letra in palavra2]
+        check_answer = [x for x in palavra2]
+        print(covered_letras)
+
+        def setup_dificil():
+            acertos = 0
+            erros = 0
+            erros_temp = 0
+            bool1 = False
+            lista_erros = []
+            while erros < dificuldade:
+                temp2 = input("type a letter: ")
+                resp3 = temp2.upper()
+                lista_erros.append(resp3)
+                limpar_tela()
+                for each in check_answer:
+                    for i in each:
+                        if resp3 == each:
+                            acertos += 1
+                            bool1 = True
+                            index = check_answer.index(i)
+                            covered_letras[index] = resp3
+                            check_answer[index] = '_'
+                            #print(check_answer)
+                            if acertos == int(len(palavra)):
+                                erros=3
+                                print('Congratulations! The word was: \n',palavra)
+                                
+                            elif erros == 3 and acertos < int(len(palavra)):
+                                print('You lose :( the word was: \n',palavra)
+                if bool1 == True:
+                    erros_temp = -1
+                    lista_erros.remove(resp3)
+                    bool1 = False
+                
+                erros += 1 + erros_temp
+                erros_temp = 0
+                
+                if erros == 0:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print(covered_letras)
+                elif erros == 1:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+                    |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 2:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|\  |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+            
+                elif erros == 3 and acertos < int(len(palavra)):
+                    print(f'''You lose :( the word was: \n {palavra}
+                        
+                +---+
+                O   |
+               /|\  |
+               / \  |
+                    |
+                    |
+                ========= ''')
+        def setup_normal():
+            acertos = 0
+            erros = 0
+            erros_temp = 0
+            bool1 = False
+            lista_erros = []
+            while erros < dificuldade:
+                temp2 = input("Type a letter: ")
+                resp3 = temp2.upper()
+                lista_erros.append(resp3)
+                limpar_tela()
+                for each in check_answer:
+                    for i in each:
+                        if resp3 == each:
+                            acertos += 1
+                            bool1 = True
+                            index = check_answer.index(i)
+                            covered_letras[index] = resp3
+                            check_answer[index] = '_'
+                            #print(check_answer)
+                            if acertos == int(len(palavra)):
+                                erros=5
+                                print('Congratulations! The word was: \n',palavra)
+                                
+                            elif erros == 5 and acertos < int(len(palavra)):
+                                print('You lose :( the word was: \n',palavra)
+                if bool1 == True:
+                    erros_temp = -1
+                    lista_erros.remove(resp3)
+                    bool1 = False
+                
+                erros += 1 + erros_temp
+                erros_temp = 0
+                
+                if erros == 0:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print(covered_letras)
+                elif erros == 1:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+                    |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 2:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|   |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 3:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|\  |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 4:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|\  |
+               /    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                    print('HINT: ',dica(palavra.lower()))
+                
+                elif erros == 5 and acertos < int(len(palavra)):
+                    print(f'''You lose :( the word was: \n {palavra}
+                        
+                +---+
+                O   |
+               /|\  |
+               / \  |
+                    |
+                    |
+                ========= ''')
+        def setup_facil():
+            acertos = 0
+            erros = 0
+            erros_temp = 0
+            bool1 = False
+            lista_erros = []
+            while erros < dificuldade:
+                temp2 = input("Type a letter: ")
+                resp3 = temp2.upper()
+                lista_erros.append(resp3)
+                limpar_tela()
+                for each in check_answer:
+                    for i in each:
+                        if resp3 == each:
+                            acertos += 1
+                            bool1 = True
+                            index = check_answer.index(i)
+                            covered_letras[index] = resp3
+                            check_answer[index] = '_'
+                            #print(check_answer)
+                            if acertos == int(len(palavra)):
+                                erros=7
+                                print('Congratulations! The word was: \n',palavra)
+                                
+                            elif erros == 7 and acertos < int(len(palavra)):
+                                print('You lose :( the word was: \n',palavra)
+                if bool1 == True:
+                    erros_temp = -1
+                    lista_erros.remove(resp3)
+                    bool1 = False
+                
+                erros += 1 + erros_temp
+                erros_temp = 0
+                
+                if erros == 0:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print(covered_letras)
+                elif erros == 1:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+                    |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 2:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+                |   |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 3:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|   |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 4:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|\  |
+                    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                    print('HINT: ',dica(palavra.lower()))
+
+                elif erros == 5:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|\  |
+               /    |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)
+                elif erros == 6:
+                    print('Errors left: ', dificuldade - erros)
+                    print('Right answers: ', acertos)
+                    print( '''
+                +---+
+                O   |
+               /|\  |
+               / \  |
+                    |
+                    |
+                =========
+                ''')
+                    print(covered_letras)
+                    print('ATENTION! wrong letters: ', lista_erros)    
+                
+                elif erros == 7 and acertos < int(len(palavra)):
+                    print(f'''You lose :( the word was: \n {palavra}
+
+                WHAT A SHAME!        
+                +---+
+                O   |
+               /|\  |
+               / \  |
+                    |
+                    |
+                ========= ''')
+                    
+        if resp4 == 1:
+            setup_facil()
+        elif resp4 == 2:
+            setup_normal()
+        else:
+            setup_dificil()
+
+        resp5 = int(input("Press <1> to play again\nPress <enter> to close the program"))        
+        if resp5 != 1:
+            retry = False
+        else:
+            limpar_tela()
+    
+game()
+
